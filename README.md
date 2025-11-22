@@ -25,52 +25,12 @@ MySQL 8 – Stores coupons, rule templates, and metadata
 
 JSON Columns – Store flexible coupon configurations without schema changes
 
-# Build & Dependency Management
-Maven – Build automation and dependency management
-
-# Testing
-Postman / cURL – Manual API testing
 
 -----------------------------------------------------------------------------------------------------------
 
-# Database Schema
-1. coupon_master
-
-Stores all coupons with their configuration and associated rule template.
-
-Column Name	Type	Description
-id	BIGINT (PK)	Unique ID for each coupon
-code	VARCHAR(100) UNIQUE	Coupon code string
-type	VARCHAR(50)	Coupon type — CART, PRODUCT, BXGY
-active	BOOLEAN	Whether the coupon is active
-start_date	DATE	Coupon validity start date
-end_date	DATE	Coupon validity end date
-metadata	JSON	Flexible configuration per coupon type (min cart value, discount%, buy qty, get qty, etc.)
-rule_template_id	BIGINT (FK)	Foreign key referencing coupon_rule_template.id
-created_at	TIMESTAMP DEFAULT CURRENT_TIMESTAMP	Creation timestamp
-updated_at	TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP	Modification timestamp
-
-2. coupon_rule_template
-Stores Drools DRL templates that define dynamic coupon logic.
-
-Column Name	Type	Description
-id	BIGINT (PK)	Template ID
-name	VARCHAR(100)	Template name
-type	VARCHAR(50)	Template type (CART, PRODUCT, BXGY)
-drl_template	LONGTEXT	DRL rule template
-
-3. product
-Stores product details used for PRODUCT and BxGy coupon validation.
-
-Column Name	Type	Description
-id	BIGINT (PK)	Product ID
-name	VARCHAR(200)	Product name
-category	VARCHAR(100)	Product category
-price	DECIMAL(10,2)	Unit price
-
------------------------------------------------------------------------------------------------------------
 
 # Coupon Types Implemented
+
 # 1. CART Coupon (Cart-Level Percentage Discount)
 
 A CART coupon applies a percentage discount on the entire cart, but only if the cart value crosses a minimum amount.

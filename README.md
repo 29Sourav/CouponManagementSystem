@@ -11,12 +11,18 @@ The goal of the project is to build a scalable, rule-driven, and easily extendab
 
 # Backend
 Java 17 – Core application language
+
 Spring Boot 3 – For building REST APIs
+
 Spring Data JPA – ORM and database access
+
 Hibernate – Entity management and persistence
+
 Drools Rule Engine – Dynamic coupon rule evaluation using DRL templates
-Database
+
+# Database
 MySQL 8 – Stores coupons, rule templates, and metadata
+
 JSON Columns – Store flexible coupon configurations without schema changes
 
 # Build & Dependency Management

@@ -17,8 +17,6 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: coupon_management_system
-          MYSQL_USER: root
-          MYSQL_PASSWORD: root
         options: >-
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
